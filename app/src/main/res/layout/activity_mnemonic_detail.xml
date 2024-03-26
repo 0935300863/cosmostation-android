@@ -805,13 +805,8 @@
                 android:background="@drawable/btn_trans_with_red_border"
                 android:minHeight="@dimen/space_45"
                 android:text="@string/str_delete_mnemonic"
-                android:textAllCaps="false" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/space_8" />
+                android:textAllCaps="false"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/btn_copy"

@@ -103,7 +103,6 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mNameEditImg.setOnClickListener(this);
         mBtnQr.setOnClickListener(this);
         mBtnRewardAddressChange.setOnClickListener(this);
         mBtnDelete.setOnClickListener(this);
@@ -157,7 +156,7 @@ public class AccountDetailActivity extends BaseActivity implements View.OnClickL
         mBaseChain = BaseChain.getChain(mAccount.baseChain);
         mChainConfig = ChainFactory.getChain(mBaseChain);
 
-        WDp.showChainDp(this, mChainConfig, mCardName, mCardBody, mCardRewardAddress);
+//        WDp.showChainDp(this, mChainConfig, mCardName, mCardBody, mCardRewardAddress);
         mChainImg.setImageResource(mChainConfig.chainImg());
 
         if (BaseChain.isGRPC(mBaseChain)) {

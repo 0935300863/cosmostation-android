@@ -86,21 +86,17 @@ public class MainActivity extends BaseActivity implements FetchCallBack {
         mFloatBtn = findViewById(R.id.btn_floating);
 
         mFloatBtn.setOnClickListener(v -> onStartSendMainDenom());
+        mFloatBtn.setVisibility(View.GONE);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         mPageAdapter = new MainViewPageAdapter(getSupportFragmentManager());
         mContentsPager.setPageTransformer(false, new FadePageTransformer());
-        mContentsPager.setOffscreenPageLimit(5);
         mContentsPager.setAdapter(mPageAdapter);
         mTabLayer.setupWithViewPager(mContentsPager);
         mTabLayer.setTabRippleColor(null);
 
-        createTab(R.drawable.wallet_ic, R.string.str_main_wallet, 0);
-        createTab(R.drawable.tokens_ic, R.string.str_main_tokens, 1);
-        createTab(R.drawable.ts_ic, R.string.str_main_history, 2);
-        createDappTab(R.string.str_main_dapp, 3);
-        createTab(R.drawable.setting_ic, R.string.str_main_set, 4);
+        createTab(R.drawable.setting_ic, R.string.str_main_set, 0);
 
         mContentsPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -116,8 +112,7 @@ public class MainActivity extends BaseActivity implements FetchCallBack {
                 if (mPageAdapter != null && mPageAdapter.mCurrentFragment != null) {
                     mPageAdapter.mCurrentFragment.onRefreshTab();
                 }
-                if (position != 0) mFloatBtn.hide();
-                else if (!mFloatBtn.isShown()) mFloatBtn.show();
+                mFloatBtn.hide();
             }
         });
 
@@ -254,10 +249,6 @@ public class MainActivity extends BaseActivity implements FetchCallBack {
             if (mPageAdapter.mCurrentFragment != null) mPageAdapter.mCurrentFragment.onRefreshTab();
             if (mPageAdapter.getItem(0) != null && mPageAdapter.mCurrentFragment != mPageAdapter.getItem(0))
                 ((MainViewPageAdapter) mContentsPager.getAdapter()).getItem(0).onRefreshTab();
-            if (mPageAdapter.getItem(1) != null && mPageAdapter.mCurrentFragment != mPageAdapter.getItem(1))
-                ((MainViewPageAdapter) mContentsPager.getAdapter()).getItem(1).onRefreshTab();
-            if (mPageAdapter.getItem(2) != null && mPageAdapter.mCurrentFragment != mPageAdapter.getItem(2))
-                ((MainViewPageAdapter) mContentsPager.getAdapter()).getItem(2).onRefreshTab();
 
             if (mChainConfig.baseChain().equals(OKEX_MAIN) && mAccount.customPath != 2) {
                 CommonAlertDialog.showSingleButton(this, getString(R.string.error_warning_title), getString(R.string.error_deprecated_account_msg), getString(R.string.str_confirm), null);
@@ -362,10 +353,6 @@ public class MainActivity extends BaseActivity implements FetchCallBack {
         public MainViewPageAdapter(FragmentManager fm) {
             super(fm);
             mFragments.clear();
-            mFragments.add(MainSendFragment.newInstance());
-            mFragments.add(MainTokensFragment.newInstance());
-            mFragments.add(MainHistoryFragment.newInstance());
-            mFragments.add(DappFragment.newInstance(null));
             mFragments.add(MainSettingFragment.newInstance());
         }
 

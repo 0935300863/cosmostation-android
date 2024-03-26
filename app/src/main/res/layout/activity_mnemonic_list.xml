@@ -66,6 +66,7 @@
             android:background="@drawable/btn_trans_with_photon_border"
             android:minHeight="@dimen/space_45"
             android:text="@string/str_mnemonic_create"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:visibility="gone"/>
     </LinearLayout>
 </RelativeLayout>

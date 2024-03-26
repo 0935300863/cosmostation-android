@@ -71,7 +71,7 @@ public class MnemonicDetailActivity extends BaseActivity implements View.OnClick
 
         onPhraseStatusChange();
 
-        mBtnEditNick.setOnClickListener(this);
+//        mBtnEditNick.setOnClickListener(this);
         mBtnDisplay.setOnClickListener(this);
         mCopy.setOnClickListener(this);
         mDerive.setOnClickListener(this);
